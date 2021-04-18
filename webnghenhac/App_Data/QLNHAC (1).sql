@@ -1,104 +1,124 @@
-﻿create database QLNHAC
+﻿USE [QLNHAC]
 GO
-use QLNHAC
+/****** Object:  Table [dbo].[BAIHAT]    Script Date: 18/04/21 21:08:28 ******/
+SET ANSI_NULLS ON
 GO
-Create table THELOAI
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BAIHAT](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[URLBaiHat] [varchar](max) NULL,
+	[TenBH] [nvarchar](max) NULL,
+	[CaSi] [nvarchar](50) NULL,
+	[MaTL] [int] NULL,
+	[TacGia] [nvarchar](100) NULL,
+	[NgayCapNhat] [date] NULL,
+	[LoiBaiHat] [nvarchar](max) NULL,
+	[LuotXemBaiHat] [int] NULL,
+PRIMARY KEY CLUSTERED 
 (
-	MaTL int Identity(1,1)  primary key,
-	TenTL nvarchar(50) NOT NULL
-)
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-Create table BAIHAT
+/****** Object:  Table [dbo].[QUANGCAO]    Script Date: 18/04/21 21:08:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[QUANGCAO](
+	[STT] [int] IDENTITY(1,1) NOT NULL,
+	[TenCongTy] [nvarchar](200) NOT NULL,
+	[HinhMinhHoa] [varchar](20) NULL,
+	[Href] [varchar](max) NULL,
+	[NgayBatDau] [date] NULL,
+	[NgayHetHan] [date] NULL,
+PRIMARY KEY CLUSTERED 
 (
-	Id int Identity(1,1),
-	URLBaiHat varchar(max),
-	TenBH nvarchar(max),	
-	CaSi nvarchar(50),	
-	MaTL int,
-	TacGia nvarchar(100),
-	NgayCapNhat Date,
-	LoiBaiHat nvarchar(max),
-	LuotXemBaiHat int default 0,
-	primary key(Id)
-)
+	[STT] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-Create table VIDEO
+/****** Object:  Table [dbo].[THANHVIEN]    Script Date: 18/04/21 21:08:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[THANHVIEN](
+	[HoTen] [nvarchar](50) NULL,
+	[TenDN] [varchar](50) NOT NULL,
+	[MatKhau] [varchar](50) NOT NULL,
+	[DienThoai] [varchar](20) NULL,
+	[Tuoi] [int] NULL,
+	[NgayDangKy] [date] NULL,
+	[Email] [varchar](50) NOT NULL,
+	[DiaChi] [nvarchar](50) NULL,
+	[GioiTinh] [nvarchar](50) NULL,
+	[NgaySinh] [date] NULL,
+	[CauHoiBaoMat] [nvarchar](50) NULL,
+	[CauTraLoi] [nvarchar](50) NULL,
+	[QuyenAdmin] [int] NULL,
+PRIMARY KEY CLUSTERED 
 (
-	MaVD int Identity(1,1)  primary key,
-	URLVideoL varchar(max),
-	URLVideoN varchar(max),
-	TenVD nvarchar(max),		
-	MaTL int,
-	TacGia nvarchar(100),
-	CaSi nvarchar(50),
-	NgayCapNhat date,
-	LuotXemVideo int default 0	
-)
+	[TenDN] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-Create table QUANGCAO
+/****** Object:  Table [dbo].[THELOAI]    Script Date: 18/04/21 21:08:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[THELOAI](
+	[MaTL] [int] IDENTITY(1,1) NOT NULL,
+	[TenTL] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
 (
-	STT INT IDENTITY(1,1),
-	TenCongTy nVarchar(200) NOT NULL,
-	HinhMinhHoa Varchar(20),
-	Href varchar(max),
-	NgayBatDau date,
-	NgayHetHan date,
-	 PRIMARY KEY(STT)
-)
+	[MaTL] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
+/****** Object:  Table [dbo].[VIDEO]    Script Date: 18/04/21 21:08:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[VIDEO](
+	[MaVD] [int] IDENTITY(1,1) NOT NULL,
+	[URLVideoL] [varchar](max) NULL,
+	[URLVideoN] [varchar](max) NULL,
+	[TenVD] [nvarchar](max) NULL,
+	[MaTL] [int] NULL,
+	[TacGia] [nvarchar](100) NULL,
+	[CaSi] [nvarchar](50) NULL,
+	[NgayCapNhat] [date] NULL,
+	[LuotXemVideo] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MaVD] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[YEUCAU]    Script Date: 18/04/21 21:08:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[YEUCAU](
+	[STTYC] [int] IDENTITY(1,1) NOT NULL,
+	[TenDN] [varchar](50) NOT NULL,
+	[MaTL] [int] NULL,
+	[Loai] [nvarchar](50) NULL,
+	[MoTa] [nvarchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[STTYC] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[BAIHAT] ON 
 
-Create table THANHVIEN
-(		
-	HoTen nVarchar(50),
-	TenDN Varchar(50) not null,
-	MatKhau Varchar(50) not null,
-	DienThoai Varchar(20),
-	Tuoi int,
-	NgayDangKy date,
-	Email Varchar(50) not null,
-	DiaChi nVarchar(50),
-	GioiTinh nVarchar(50),
-	NgaySinh date,
-	CauHoiBaoMat nVarchar(50),
-	CauTraLoi nVarchar(50),
-	QuyenAdmin int default 1,
-	primary key (TenDN)			
-)
-GO
-create table YEUCAU
-(
-	STTYC int IDENTITY(1,1),
-	TenDN Varchar(50) not null,
-	MaTL int,
-	Loai nvarchar(50),
-	MoTa nvarchar(max),
-	primary key (STTYC)
-)
-GO
-alter table  YEUCAU ADD CONSTRAINT FK_YeuCau_Thanhvien FOREIGN KEY (TenDN) REFERENCES THANHVIEN(TenDN)
-GO
-alter TABLE BAIHAT ADD CONSTRAINT FK_BaiHat_TheLoai FOREIGN KEY (MaTL) REFERENCES THELOAI(MaTL)
-GO
-alter TABLE VIDEO ADD CONSTRAINT FK_Video_TheLoai FOREIGN KEY (MaTL) REFERENCES THELOAI(MaTL)
-GO
-SET IDENTITY_INSERT THELOAI ON
-GO
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(1, N'Nhạc Phim')
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(2, N'Nhạc Trẻ')
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(3, N'Trữ Tình')
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(4, N'Thiếu nhi')
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(5, N'Dance Việt')
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(6, N'Rock Việt')
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(7, N'Rap/Hip Hop Việt')
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(8, N'Pop')
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(9, N'Không lời')
-insert [dbo].[THELOAI]([MaTL],[TenTL]) values(10,N'Nhạc Trịnh')
-GO
-SET IDENTITY_INSERT THELOAI OFF
-GO
-SET IDENTITY_INSERT BAIHAT ON
-GO
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (1,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/ZW78IO98?start=true" frameborder="0" allowfullscreen="true"></iframe>',N'Như Phút Ban Đầu',N'Noo Phước Thịnh',2,N'Đỗ Hiếu','10/25/2016',N'Vì em anh như người điên mất trí
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (1, N'mp3file/NhuPhutBanDau.mp3', N'Như Phút Ban Đầu', N'Noo Phước Thịnh', 2, N'Đỗ Hiếu', CAST(N'2016-10-25' AS Date), N'Vì em anh như người điên mất trí
 Vì em anh như chẳng còn biết nghĩ suy
 Vì anh đã trót lỡ đắm say em không bận tâm mai sau thế nào
 Dù mai sau kia gập gềnh sóng gió
@@ -142,8 +162,8 @@ Vì em anh như chẳng còn biết nghĩ suy
 Vì anh đã trót lỡ đắm say em không bận tâm mai sau thế nào
 Dù mai sau kia gập gềnh sóng gió
 Dù mai sau kia dòng đời có cuốn xoay
-Dù nhắm mắt anh vẫn nắm tay em như ngày ta bắt đầu',0)
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (2,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/album/ZOUBB0AZ" frameborder="0" allowfullscreen="true"></iframe>',N'Duyên Phận',N'Hiền Thục',3,N'Hiền Thục','10/24/2016',N'Phận là con gái, chưa một lần yêu ai 
+Dù nhắm mắt anh vẫn nắm tay em như ngày ta bắt đầu', 26)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (2, N'mp3file/DuyenPhan.mp3', N'Duyên Phận', N'Hiền Thục', 3, N'Hiền Thục', CAST(N'2016-10-24' AS Date), N'Phận là con gái, chưa một lần yêu ai 
 Nhìn về tương lai mà thấy như sông rộng đường dài 
 Cảnh nhà neo đơn, bầy em chưa lớn trĩu đôi vai gánh nhọc nhằn 
 Thầy mẹ thương em nhờ tìm người se duyên 
@@ -168,8 +188,8 @@ Bỏ lại sau lưng bầy em ngơ ngác đứng trông theo mắt đượm bu�
 Thầy mẹ vui hơn mà lệ tràn rưng rưng 
 Dặn dò con yêu phải sống theo gia đạo bên chồng 
 Bước qua dòng sông hỏi từng con sóng 
-Đời người con gái không muốn yêu ai được không?',0)
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (3,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/ZW7W6B0C" frameborder="0" allowfullscreen="true"></iframe>',N'Chú Voi Con Ở Bản Đôn ',N' Bé Ngọc Ngân',4,N'Phạm Tuyên','10/23/2016',N'chú voi con bản đôn 
+Đời người con gái không muốn yêu ai được không?', 8)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (3, N'mp3file/ChuVoiConOBanDon.mp3', N'Chú Voi Con Ở Bản Đôn ', N' Bé Ngọc Ngân', 4, N'Phạm Tuyên', CAST(N'2016-10-23' AS Date), N'chú voi con bản đôn 
 chưa có ngà nên còn trẻ con 
 từ rừng già chú đến với người 
 vẫn ham ăn với lại ham chơi. 
@@ -188,8 +208,8 @@ kéo đung đưa theo nhịp chiêng vui.
 voi con ơi,voi con ơi 
 mau lớn nhanh có thân mình to 
 khắp chốn tây nguyên gần nhiều voi 
-góp sức xây buôn làng đẹp tươi',0)
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (4,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/ZW78E8OA" frameborder="0" allowfullscreen="true"></iframe>',N'Do What You Want (QMX Mix)',N'Châu Đăng Khoa, Karik',5,N'Châu Đăng Khoa','10/22/2016',N'Hãy cứ khát khao hãy cứ dại khờ 
+góp sức xây buôn làng đẹp tươi', 1)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (4, N'mp3file/DoWhatYouWant.mp3', N'Do What You Want (QMX Mix)', N'Châu Đăng Khoa, Karik', 5, N'Châu Đăng Khoa', CAST(N'2016-10-22' AS Date), N'Hãy cứ khát khao hãy cứ dại khờ 
 Hãy cứ ước mơ mặc ai kệ ai hững hờ 
 Hãy cứ đam mê hãy cứ vụng về 
 Vì cuộc sống này là thế 
@@ -224,8 +244,8 @@ Buông bỏ đam mê 1 phần như khao khát xa 1 đời kiếp người khác 
 Ế ếh ếh ềh oh… vươn xa hết con đường dài 
 Ế ếh êh êh oh… che chở niềm tin ngày mai 
 Ế ếh ếh ềh oh…đôi chân sẽ không dừng lại 
-Tiến tới phía trước…cứ cứ thế ta bước để 1 ngày thế giới họ biết đến ta là ai',0)
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (5,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/ZWZ9A8IO" frameborder="0" allowfullscreen="true"></iframe>',N'Thời Gian',N'MicroWave',6,N' - MicroWave','11/22/2016',N'[V1] Đón nắng sớm khi ta còn mơ mặt trời luôn soi bước đến những nơi còn
+Tiến tới phía trước…cứ cứ thế ta bước để 1 ngày thế giới họ biết đến ta là ai', 0)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (5, N'mp3file/ThoiGian.mp3', N'Thời Gian', N'MicroWave', 6, N' - MicroWave', CAST(N'2016-11-22' AS Date), N'[V1] Đón nắng sớm khi ta còn mơ mặt trời luôn soi bước đến những nơi còn
  u buồn và cất tiếng hát khi ta còn yêu một ngày luôn khao khát một ngày một ngày không đêm đi trong hư vô bàn tay giá lạnh và trái tim khơi nguồn để gió cuốn đi 
 
 Chorus:Thời gian vụt qua những yêu thương trong đời vẫn còn đây và luôn đắm say ngày ta còn yêu những bước chân em mang ngày buồn cùng gió vụt bay và lời ca vang mãi 
@@ -233,8 +253,8 @@ Chorus:Thời gian vụt qua những yêu thương trong đời vẫn còn đây
 [V2] Lòng mãi nhớ đến khi ta còn thơ chuyện thần tiên nuôi sống những tâm 
 hồn còn ngây dại và lúc cất bước xa con đường xưa một mình em thao thức chờ đợi một ngày không xa và trong cơn mơ này nhiều lúc nước mắt em tuôn dài chờ đón nắng mai 
 
-Chorus: Thời gian vụt qua những yêu thương trong đời vẫn còn đây và luôn đắm say ngày ta còn yêu những bước chân em mang ngày buồn cùng gió vụt bay và lời ca vang mãi (3x)',0)
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (6,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/album/ZOUEWOE6" frameborder="0" allowfullscreen="true"></iframe>',N'We Hear U (Single)',N'Karik',7,N'Karik','9/10/2016',N'Mở mắt ra ! lại 1 ngày nữa hoàng hôn ghé qua 
+Chorus: Thời gian vụt qua những yêu thương trong đời vẫn còn đây và luôn đắm say ngày ta còn yêu những bước chân em mang ngày buồn cùng gió vụt bay và lời ca vang mãi (3x)', 1)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (6, N'mp3file/WeHearU.mp3', N'We Hear U (Single)', N'Karik', 7, N'Karik', CAST(N'2016-09-10' AS Date), N'Mở mắt ra ! lại 1 ngày nữa hoàng hôn ghé qua 
 Hàng trăm câu hỏi mâu thuẫn vẫn níu thân này chưa muốn né ra 
 Đường thành công còn lại bao xa ? 
 Còn bao lâu thân này gục ngã ? 
@@ -280,10 +300,10 @@ U laugh, U cry
 U love, U lose 
 U play, U fight 
 U work, U hear 
-U question why, Why Whyyy',0)
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (7,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/IWBUW99W" frameborder="0" allowfullscreen="true"></iframe>',N'We Dont Talk Anymore',N'Charlie Puth, Selena Gomez',8,N'Charlie Puth','10/25/2016',N'Đang cập nhật',0)
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (8,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/ZW7UCADA" frameborder="0" allowfullscreen="true"></iframe>',N'Riêng Một Góc Trời',N'Hòa Tấu',9,N'Ngô Thụy Miên','2/22/2014',N'',0)
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (9,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/ZWZ9BI9O" frameborder="0" allowfullscreen="true"></iframe>',N'Còn Ai Với Ai',N'Trịnh Vĩnh Trinh',10,N'Trịnh Công Sơn','10/25/2016',N'Không có em còn tôi với ai 
+U question why, Why Whyyy', 0)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (7, N'mp3file/WeDontTalkAnymore.mp3', N'We Dont Talk Anymore', N'Charlie Puth, Selena Gomez', 8, N'Charlie Puth', CAST(N'2016-10-25' AS Date), N'Đang cập nhật', 1)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (8, N'mp3file/RiengMotGocTroi.mp3', N'Riêng Một Góc Trời', N'Hòa Tấu', 9, N'Ngô Thụy Miên', CAST(N'2014-02-22' AS Date), N'', 5)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (9, N'mp3file/ConAiVoiAi.mp3', N'Còn Ai Với Ai', N'Trịnh Vĩnh Trinh', 10, N'Trịnh Công Sơn', CAST(N'2016-10-25' AS Date), N'Không có em còn tôi với ai 
 Không có em lạnh giá đường vui 
 Không có em ngồi đứng nơi này 
 Không có em còn ai với ai 
@@ -307,8 +327,8 @@ Mang trái tim mùa xuân héo khô
 Không có em buồn vui với ai 
 Không có em lụa gấm nhạt phai 
 Ai đã chia người mãi xa người 
-Ai giết đi tình đang lứa đôi',0)
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (10,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/ZW6F98CB?start=true" frameborder="0" allowfullscreen="true"></iframe>',N'Auditory Hallucination (Kill Me Heal Me OST Part.1)',N'Jang Jae In, NaShow',1,N'Chưa rõ','3/3/2014',N'[Rap1]
+Ai giết đi tình đang lứa đôi', 10)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (10, N'mp3file/AuditoryHallucination.mp3', N'Auditory Hallucination (Kill Me Heal Me OST Part.1)', N'Jang Jae In, NaShow', 1, N'Chưa rõ', CAST(N'2014-03-03' AS Date), N'[Rap1]
 nae ane sumeun geotdeuri mariya
 nal cham manhi byeonhage haetjanha
 nal jamjaeugo du son mukkgoseon
@@ -392,9 +412,8 @@ geurimcheoreom mandeunda
 mianhae neol butjapgo
 meoreojiji ma aetage bulleo
 dasi boiji annneun seulpeume
-tto nunmulman heulleo',0)
-
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (11,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/ZW78EEZC" frameborder="0" allowfullscreen="true"></iframe>',N'Lạnh Lẽo/ 涼涼(Tam Sinh Tam Thế: Thập Lý Đào Hoa OST)',N'Dương Tông Vỹ, Trương Bích Thần',1,N'Chưa rõ','3/3/2010',N'入夜漸微涼 繁花落地成霜 
+tto nunmulman heulleo', 2)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (11, N'mp3file/LanhLeo.mp3', N'Lạnh Lẽo/ 涼涼(Tam Sinh Tam Thế: Thập Lý Đào Hoa OST)', N'Dương Tông Vỹ, Trương Bích Thần', 1, N'Chưa rõ', CAST(N'2010-03-03' AS Date), N'入夜漸微涼 繁花落地成霜 
 Ruỳè jiàn wēi liáng fánhuā luòdì chéng shuāng 
 Đêm lạnh, phồn hoa rơi xuống đất thành sương 
 
@@ -505,9 +524,8 @@ Hoa rơi hữu ý, nước chảy vô tình
 
 別讓恩怨愛恨 涼透那花的純 
 bié ràng ēnyuàn ài hèn liáng tòu nà huā de chún 
-Đừng để cho ân oán, yêu hận làm lạnh lẽo sự thuần khiết của hoa',0)
-
-insert [dbo].[BAIHAT] ([Id],[URLBaiHat],[TenBH],[CaSi],[MaTL],[TacGia],[NgayCapNhat],[LoiBaiHat],[LuotXemBaiHat]) values (12,'<iframe scrolling="no" width="640" height="180" src="http://mp3.zing.vn/embed/song/ZW7WEZWA?start=true" frameborder="0" allowfullscreen="true"></iframe>',N'Love Overflowing From My Heart (OST Nụ Hôn Định Mệnh',N'Putthipong Sriwat (Leo Putt)',1,N'Chưa rõ','10/21/2015',N'เคยมองแค่เพียงไกลๆ
+Đừng để cho ân oán, yêu hận làm lạnh lẽo sự thuần khiết của hoa', 1)
+INSERT [dbo].[BAIHAT] ([Id], [URLBaiHat], [TenBH], [CaSi], [MaTL], [TacGia], [NgayCapNhat], [LoiBaiHat], [LuotXemBaiHat]) VALUES (12, N'mp3file/LoveOverflowing.mp3', N'Love Overflowing From My Heart (OST Nụ Hôn Định Mệnh', N'Putthipong Sriwat (Leo Putt)', 1, N'Chưa rõ', CAST(N'2015-10-21' AS Date), N'เคยมองแค่เพียงไกลๆ
 Koey maung kae piang glai glai
 I only watched you from afar
 Em chỉ có thể đứng nhìn anh từ xa
@@ -595,45 +613,88 @@ Secretly looking at you every day
 เป็นคนเดียวที่ฉันฝังใจ
 Bpen kon diao tee chun fung jai
 You’re the only person who I have imprinted in my heart
-Trái tim em đã khắc khắc sâu hình ảnh của anh mất rồi',0)
-SET IDENTITY_INSERT BAIHAT OFF
+Trái tim em đã khắc khắc sâu hình ảnh của anh mất rồi', 0)
+SET IDENTITY_INSERT [dbo].[BAIHAT] OFF
 GO
-SET IDENTITY_INSERT VIDEO ON
-GO
-insert [dbo].[VIDEO] ([MaVD],[URLVideoL],[URLVideoN],[TenVD],[MaTL],[TacGia],[CaSi],[NgayCapNhat],[LuotXemVideo]) values (1,'<iframe width="690" height="321" src="https://www.youtube.com/embed/K8dNPVVBvX8" frameborder="0" allowfullscreen></iframe>','<iframe width="200" src="https://www.youtube.com/embed/K8dNPVVBvX8" frameborder="0"></iframe>',N'Tổng hợp nhạc phim Mây Họa Ánh Trăng(Moonlight Drawn by Clouds OST part 1,2,3,4,5)',1,N'Nhiều tác giả',N'Nhiều ca sĩ','10/25/2016',0)
-insert [dbo].[VIDEO] ([MaVD],[URLVideoL],[URLVideoN],[TenVD],[MaTL],[TacGia],[CaSi],[NgayCapNhat],[LuotXemVideo]) values (2,'<iframe width="690" height="321" src="https://www.youtube.com/embed/EOWXlT8MStM" frameborder="0" allowfullscreen></iframe>','<iframe width="200" src="https://www.youtube.com/embed/EOWXlT8MStM" frameborder="0"></iframe>',N'Tổng hợp nhạc phim Người Tình Ánh Trăng( Moon lovers OST part 1,2,3,4)',1,N'Nhiều tác giả',N'Nhiều ca sĩ','10/25/2016',0)
-insert [dbo].[VIDEO] ([MaVD],[URLVideoL],[URLVideoN],[TenVD],[MaTL],[TacGia],[CaSi],[NgayCapNhat],[LuotXemVideo]) values (3,'<iframe width="690" height="321" src="https://www.youtube.com/embed/DiAPHAWgUqA" frameborder="0" allowfullscreen></iframe>','<iframe width="200" src="https://www.youtube.com/embed/DiAPHAWgUqA" frameborder="0"></iframe>',N'Như Phút Ban Đầu | Noo Phước Thịnh ',2,N'Đỗ Hiếu',N'Noo Phước Thịnh','10/25/2016',0)
-insert [dbo].[VIDEO] ([MaVD],[URLVideoL],[URLVideoN],[TenVD],[MaTL],[TacGia],[CaSi],[NgayCapNhat],[LuotXemVideo]) values (4,'<iframe width="690" height="321" src="https://www.youtube.com/embed/AQm9GDjVdgs" frameborder="0" allowfullscreen></iframe>','<iframe width="200" src="https://www.youtube.com/embed/AQm9GDjVdgs" frameborder="0"></iframe>',N'Cause I Love You | Noo Phước Thịnh ',2,N'Đỗ Hiếu',N'Noo Phước Thịnh','10/10/2015',0)
-insert [dbo].[VIDEO] ([MaVD],[URLVideoL],[URLVideoN],[TenVD],[MaTL],[TacGia],[CaSi],[NgayCapNhat],[LuotXemVideo]) values (5,'<iframe width="690" height="321" src="https://www.youtube.com/embed/tFlrJaxnPX0" frameborder="0" allowfullscreen></iframe>','<iframe width="200" src="https://www.youtube.com/embed/tFlrJaxnPX0" frameborder="0"></iframe>',N'Em Là Bà Nội Của Anh | Trọng Hiếu ft. Tăng Nhật Tuệ ',2,N'Tăng Nhật Tuệ ',N'Trọng Hiếu ft. Tăng Nhật Tuệ','2/22/2015',0)
-insert [dbo].[VIDEO] ([MaVD],[URLVideoL],[URLVideoN],[TenVD],[MaTL],[TacGia],[CaSi],[NgayCapNhat],[LuotXemVideo]) values (6,'<iframe width="690" height="321" src="https://www.youtube.com/embed/7llvXSOg-rU" frameborder="0" allowfullscreen></iframe>','<iframe width="200" src="https://www.youtube.com/embed/7llvXSOg-rU" frameborder="0"></iframe>',N'[Vietsub+ kara] Dẫu biết là sai- Nhạc phim Oan Gia Vườn Trường- Koo Prab Chabab Hua Jai',1,N'Chưa rõ',N'Chưa rõ','5/5/2016',0)
-insert [dbo].[VIDEO] ([MaVD],[URLVideoL],[URLVideoN],[TenVD],[MaTL],[TacGia],[CaSi],[NgayCapNhat],[LuotXemVideo]) values (7,'<iframe width="690" height="321" src="https://www.youtube.com/embed/50Qa3-X23SE" frameborder="0" allowfullscreen></iframe>','<iframe width="200" src="https://www.youtube.com/embed/50Qa3-X23SE" frameborder="0"></iframe>',N'[MV] Nhạc phim cổ tích một chuyện tình(Karn La Krang Neung Nai Hua Jai ost)',1,N'Chưa rõ',N'Chưa rõ','9/25/2016',0)
-insert [dbo].[VIDEO] ([MaVD],[URLVideoL],[URLVideoN],[TenVD],[MaTL],[TacGia],[CaSi],[NgayCapNhat],[LuotXemVideo]) values (8,'<iframe width="690" height="321" src="https://www.youtube.com/embed/BRaEY7UN5Wk" frameborder="0" allowfullscreen></iframe>','<iframe width="200" src="https://www.youtube.com/embed/BRaEY7UN5Wk" frameborder="0"></iframe>',N'[Vietsub+Kara] Anh muốn- Trương Kiệt ',1,N'Trương Kiệt',N'Trương Kiệt','2/24/2013',0)
-GO
-SET IDENTITY_INSERT VIDEO OFF
-GO
-SET IDENTITY_INSERT [dbo].[QUANGCAO] ON
-GO
-INSERT [dbo].[QUANGCAO] ([STT], [TenCongTy], [HinhMinhHoa], [Href], [Ngaybatdau], [NgayHetHan]) VALUES (1, N'mobile-phones', N'QC1.PNG', N'http://consumer.huawei.com/vn/mobile-phones/features/y6ii-vn.htm?utm_source=zingmp3&utm_campaign=huaweigr5mini2016&utm_medium=desktopbanner','10/31/2016','12/12/2016')
-INSERT [dbo].[QUANGCAO] ([STT], [TenCongTy], [HinhMinhHoa], [Href], [Ngaybatdau], [NgayHetHan]) VALUES (2, N'lazada', N'QC2.PNG', N'http://www.lazada.vn/rohto-mentholatum-vietnam-acnes-combo/?utm_source=Rohto&utm_medium=MicroAd','11/20/2016','12/12/2016')
-INSERT [dbo].[QUANGCAO] ([STT], [TenCongTy], [HinhMinhHoa], [Href], [Ngaybatdau], [NgayHetHan]) VALUES (3, N'Thế giới di động', N'QC3.jpg', N'https://www.thegioididong.com/dtdd-oppo','9/1/2017','12/12/2016')
-INSERT [dbo].[QUANGCAO] ([STT], [TenCongTy], [HinhMinhHoa], [Href], [Ngaybatdau], [NgayHetHan]) VALUES (4, N'Thế giới di động', N'QC4.PNG', N'https://www.facebook.com/8899jobbank/?ref=bookmarks', '10/31/2016','12/12/2016')
-GO
+SET IDENTITY_INSERT [dbo].[QUANGCAO] ON 
+
+INSERT [dbo].[QUANGCAO] ([STT], [TenCongTy], [HinhMinhHoa], [Href], [NgayBatDau], [NgayHetHan]) VALUES (1, N'mobile-phones', N'QC1.PNG', N'http://consumer.huawei.com/vn/mobile-phones/features/y6ii-vn.htm?utm_source=zingmp3&utm_campaign=huaweigr5mini2016&utm_medium=desktopbanner', CAST(N'2016-10-31' AS Date), CAST(N'2016-12-12' AS Date))
+INSERT [dbo].[QUANGCAO] ([STT], [TenCongTy], [HinhMinhHoa], [Href], [NgayBatDau], [NgayHetHan]) VALUES (2, N'lazada', N'QC2.PNG', N'http://www.lazada.vn/rohto-mentholatum-vietnam-acnes-combo/?utm_source=Rohto&utm_medium=MicroAd', CAST(N'2016-11-20' AS Date), CAST(N'2016-12-12' AS Date))
+INSERT [dbo].[QUANGCAO] ([STT], [TenCongTy], [HinhMinhHoa], [Href], [NgayBatDau], [NgayHetHan]) VALUES (3, N'Thế giới di động', N'QC3.jpg', N'https://www.thegioididong.com/dtdd-oppo', CAST(N'2017-09-01' AS Date), CAST(N'2016-12-12' AS Date))
+INSERT [dbo].[QUANGCAO] ([STT], [TenCongTy], [HinhMinhHoa], [Href], [NgayBatDau], [NgayHetHan]) VALUES (4, N'Thế giới di động', N'QC4.PNG', N'https://www.facebook.com/8899jobbank/?ref=bookmarks', CAST(N'2016-10-31' AS Date), CAST(N'2016-12-12' AS Date))
 SET IDENTITY_INSERT [dbo].[QUANGCAO] OFF
 GO
-insert [dbo].[THANHVIEN] ([HoTen],[TenDN] ,[MatKhau],[DienThoai],[Tuoi],[NgayDangKy],[Email] ,[DiaChi] ,[GioiTinh] ,[NgaySinh] ,[CauHoiBaoMat] ,[CauTraLoi] ,[QuyenAdmin]) values(N'Nguyễn Thị Hoàng Hà',N'admin','12345','01664608444','20','10/10/2016',N'hanth25596@gmail.com',N'Bình Dương',N'Nữ','5/25/1996',N'',N'',0)
-insert [dbo].[THANHVIEN] ([HoTen],[TenDN] ,[MatKhau],[DienThoai],[Tuoi],[NgayDangKy],[Email] ,[DiaChi] ,[GioiTinh] ,[NgaySinh] ,[CauHoiBaoMat] ,[CauTraLoi] ,[QuyenAdmin]) values(N'Nguyễn Hoàng Giang',N'hoanggiang','12345','01664608333','23','10/10/2016',N'aaa@gmail.com',N'Bình Dương',N'Nam','3/26/1993',N'',N'',1)
-insert [dbo].[THANHVIEN] ([HoTen],[TenDN] ,[MatKhau],[DienThoai],[Tuoi],[NgayDangKy],[Email] ,[DiaChi] ,[GioiTinh] ,[NgaySinh] ,[CauHoiBaoMat] ,[CauTraLoi] ,[QuyenAdmin]) values(N'Phan Hoàng An',N'phanhoangan21','0907360860','01664608333','23','10/10/2016',N'aa@gmail.com',N'Bình Dương',N'Nữ','3/26/1993',N'',N'',1)
+INSERT [dbo].[THANHVIEN] ([HoTen], [TenDN], [MatKhau], [DienThoai], [Tuoi], [NgayDangKy], [Email], [DiaChi], [GioiTinh], [NgaySinh], [CauHoiBaoMat], [CauTraLoi], [QuyenAdmin]) VALUES (N'Nguyễn Thị Hoàng Hà', N'admin', N'12345', N'01664608444', 20, CAST(N'2016-10-10' AS Date), N'hanth25596@gmail.com', N'Bình Dương', N'Nữ', CAST(N'1996-05-25' AS Date), N'', N'', 0)
+INSERT [dbo].[THANHVIEN] ([HoTen], [TenDN], [MatKhau], [DienThoai], [Tuoi], [NgayDangKy], [Email], [DiaChi], [GioiTinh], [NgaySinh], [CauHoiBaoMat], [CauTraLoi], [QuyenAdmin]) VALUES (N'Nguyễn Hoàng Giang', N'hoanggiang', N'12345', N'01664608333', 23, CAST(N'2016-10-10' AS Date), N'aaa@gmail.com', N'Bình Dương', N'Nam', CAST(N'1993-03-26' AS Date), N'', N'', 1)
+INSERT [dbo].[THANHVIEN] ([HoTen], [TenDN], [MatKhau], [DienThoai], [Tuoi], [NgayDangKy], [Email], [DiaChi], [GioiTinh], [NgaySinh], [CauHoiBaoMat], [CauTraLoi], [QuyenAdmin]) VALUES (N'Phan Hoàng An', N'phanhoangan21', N'0907360860', N'01664608333', 23, CAST(N'2016-10-10' AS Date), N'aa@gmail.com', N'Bình Dương', N'Nữ', CAST(N'1993-03-26' AS Date), N'', N'', 1)
+GO
+SET IDENTITY_INSERT [dbo].[THELOAI] ON 
+
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (1, N'Nhạc Phim')
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (2, N'Nhạc Trẻ')
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (3, N'Trữ Tình')
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (4, N'Thiếu nhi')
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (5, N'Dance Việt')
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (6, N'Rock Việt')
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (7, N'Rap/Hip Hop Việt')
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (8, N'Pop')
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (9, N'Không lời')
+INSERT [dbo].[THELOAI] ([MaTL], [TenTL]) VALUES (10, N'Nhạc Trịnh')
+SET IDENTITY_INSERT [dbo].[THELOAI] OFF
+GO
+SET IDENTITY_INSERT [dbo].[VIDEO] ON 
+
+INSERT [dbo].[VIDEO] ([MaVD], [URLVideoL], [URLVideoN], [TenVD], [MaTL], [TacGia], [CaSi], [NgayCapNhat], [LuotXemVideo]) VALUES (1, N'<iframe width="690" height="321" src="https://www.youtube.com/embed/K8dNPVVBvX8" frameborder="0" allowfullscreen></iframe>', N'<iframe width="200" src="https://www.youtube.com/embed/K8dNPVVBvX8" frameborder="0"></iframe>', N'Tổng hợp nhạc phim Mây Họa Ánh Trăng(Moonlight Drawn by Clouds OST part 1,2,3,4,5)', 1, N'Nhiều tác giả', N'Nhiều ca sĩ', CAST(N'2016-10-25' AS Date), 0)
+INSERT [dbo].[VIDEO] ([MaVD], [URLVideoL], [URLVideoN], [TenVD], [MaTL], [TacGia], [CaSi], [NgayCapNhat], [LuotXemVideo]) VALUES (2, N'<iframe width="690" height="321" src="https://www.youtube.com/embed/EOWXlT8MStM" frameborder="0" allowfullscreen></iframe>', N'<iframe width="200" src="https://www.youtube.com/embed/EOWXlT8MStM" frameborder="0"></iframe>', N'Tổng hợp nhạc phim Người Tình Ánh Trăng( Moon lovers OST part 1,2,3,4)', 1, N'Nhiều tác giả', N'Nhiều ca sĩ', CAST(N'2016-10-25' AS Date), 0)
+INSERT [dbo].[VIDEO] ([MaVD], [URLVideoL], [URLVideoN], [TenVD], [MaTL], [TacGia], [CaSi], [NgayCapNhat], [LuotXemVideo]) VALUES (3, N'<iframe width="690" height="321" src="https://www.youtube.com/embed/DiAPHAWgUqA" frameborder="0" allowfullscreen></iframe>', N'<iframe width="200" src="https://www.youtube.com/embed/DiAPHAWgUqA" frameborder="0"></iframe>', N'Như Phút Ban Đầu | Noo Phước Thịnh ', 2, N'Đỗ Hiếu', N'Noo Phước Thịnh', CAST(N'2016-10-25' AS Date), 0)
+INSERT [dbo].[VIDEO] ([MaVD], [URLVideoL], [URLVideoN], [TenVD], [MaTL], [TacGia], [CaSi], [NgayCapNhat], [LuotXemVideo]) VALUES (4, N'<iframe width="690" height="321" src="https://www.youtube.com/embed/AQm9GDjVdgs" frameborder="0" allowfullscreen></iframe>', N'<iframe width="200" src="https://www.youtube.com/embed/AQm9GDjVdgs" frameborder="0"></iframe>', N'Cause I Love You | Noo Phước Thịnh ', 2, N'Đỗ Hiếu', N'Noo Phước Thịnh', CAST(N'2015-10-10' AS Date), 0)
+INSERT [dbo].[VIDEO] ([MaVD], [URLVideoL], [URLVideoN], [TenVD], [MaTL], [TacGia], [CaSi], [NgayCapNhat], [LuotXemVideo]) VALUES (5, N'<iframe width="690" height="321" src="https://www.youtube.com/embed/tFlrJaxnPX0" frameborder="0" allowfullscreen></iframe>', N'<iframe width="200" src="https://www.youtube.com/embed/tFlrJaxnPX0" frameborder="0"></iframe>', N'Em Là Bà Nội Của Anh | Trọng Hiếu ft. Tăng Nhật Tuệ ', 2, N'Tăng Nhật Tuệ ', N'Trọng Hiếu ft. Tăng Nhật Tuệ', CAST(N'2015-02-22' AS Date), 0)
+INSERT [dbo].[VIDEO] ([MaVD], [URLVideoL], [URLVideoN], [TenVD], [MaTL], [TacGia], [CaSi], [NgayCapNhat], [LuotXemVideo]) VALUES (6, N'<iframe width="690" height="321" src="https://www.youtube.com/embed/7llvXSOg-rU" frameborder="0" allowfullscreen></iframe>', N'<iframe width="200" src="https://www.youtube.com/embed/7llvXSOg-rU" frameborder="0"></iframe>', N'[Vietsub+ kara] Dẫu biết là sai- Nhạc phim Oan Gia Vườn Trường- Koo Prab Chabab Hua Jai', 1, N'Chưa rõ', N'Chưa rõ', CAST(N'2016-05-05' AS Date), 0)
+INSERT [dbo].[VIDEO] ([MaVD], [URLVideoL], [URLVideoN], [TenVD], [MaTL], [TacGia], [CaSi], [NgayCapNhat], [LuotXemVideo]) VALUES (7, N'<iframe width="690" height="321" src="https://www.youtube.com/embed/50Qa3-X23SE" frameborder="0" allowfullscreen></iframe>', N'<iframe width="200" src="https://www.youtube.com/embed/50Qa3-X23SE" frameborder="0"></iframe>', N'[MV] Nhạc phim cổ tích một chuyện tình(Karn La Krang Neung Nai Hua Jai ost)', 1, N'Chưa rõ', N'Chưa rõ', CAST(N'2016-09-25' AS Date), 0)
+INSERT [dbo].[VIDEO] ([MaVD], [URLVideoL], [URLVideoN], [TenVD], [MaTL], [TacGia], [CaSi], [NgayCapNhat], [LuotXemVideo]) VALUES (8, N'<iframe width="690" height="321" src="https://www.youtube.com/embed/BRaEY7UN5Wk" frameborder="0" allowfullscreen></iframe>', N'<iframe width="200" src="https://www.youtube.com/embed/BRaEY7UN5Wk" frameborder="0"></iframe>', N'[Vietsub+Kara] Anh muốn- Trương Kiệt ', 1, N'Trương Kiệt', N'Trương Kiệt', CAST(N'2013-02-24' AS Date), 0)
+SET IDENTITY_INSERT [dbo].[VIDEO] OFF
+GO
+ALTER TABLE [dbo].[BAIHAT] ADD  DEFAULT ((0)) FOR [LuotXemBaiHat]
+GO
+ALTER TABLE [dbo].[THANHVIEN] ADD  DEFAULT ((1)) FOR [QuyenAdmin]
+GO
+ALTER TABLE [dbo].[VIDEO] ADD  DEFAULT ((0)) FOR [LuotXemVideo]
+GO
+ALTER TABLE [dbo].[BAIHAT]  WITH CHECK ADD  CONSTRAINT [FK_BaiHat_TheLoai] FOREIGN KEY([MaTL])
+REFERENCES [dbo].[THELOAI] ([MaTL])
+GO
+ALTER TABLE [dbo].[BAIHAT] CHECK CONSTRAINT [FK_BaiHat_TheLoai]
+GO
+ALTER TABLE [dbo].[VIDEO]  WITH CHECK ADD  CONSTRAINT [FK_Video_TheLoai] FOREIGN KEY([MaTL])
+REFERENCES [dbo].[THELOAI] ([MaTL])
+GO
+ALTER TABLE [dbo].[VIDEO] CHECK CONSTRAINT [FK_Video_TheLoai]
+GO
+ALTER TABLE [dbo].[YEUCAU]  WITH CHECK ADD  CONSTRAINT [FK_YeuCau_Thanhvien] FOREIGN KEY([TenDN])
+REFERENCES [dbo].[THANHVIEN] ([TenDN])
+GO
+ALTER TABLE [dbo].[YEUCAU] CHECK CONSTRAINT [FK_YeuCau_Thanhvien]
+GO
+/****** Object:  StoredProcedure [dbo].[kiemtraquyen]    Script Date: 18/04/21 21:08:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- thủ tục kiểm tra phân quyền trang web khi đăng nhập
+ create proc [dbo].[kiemtraquyen]
+@username varchar(50)
+as
+select QuyenAdmin from THANHVIEN where TenDN = @username
+GO
+/****** Object:  StoredProcedure [dbo].[login_form]    Script Date: 18/04/21 21:08:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
 GO
 --thủ tục kiểm tra phân quyền trang web khi đăng nhập
-create proc login_form
+create proc [dbo].[login_form]
 @user varchar(50),
 @pass varchar(50)
 as 
 select *from THANHVIEN where TenDN=@user and MatKhau = @pass
-go
--- thủ tục kiểm tra phân quyền trang web khi đăng nhập
- create proc kiemtraquyen
-@username varchar(50)
-as
-select QuyenAdmin from THANHVIEN where TenDN = @username
-go
+GO
