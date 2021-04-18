@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Src="~/UC/ucheader.ascx" TagPrefix="uc1" TagName="ucheader" %>
+<%@ Register Src="~/UC/ucMenu.ascx" TagPrefix="uc1" TagName="ucMenu" %>
+<%@ Register Src="~/UC/ucFooter.ascx" TagPrefix="uc1" TagName="ucFooter" %>
+<%@ Register Src="~/UC/ucAside.ascx" TagPrefix="uc1" TagName="ucAside" %>
+<%@ Register Src="~/UC/ucPanner.ascx" TagPrefix="uc1" TagName="ucPanner" %>
+<%@ Register Src="~/UC/ucQuocGia.ascx" TagPrefix="uc1" TagName="ucQuocGia" %>
+<%@ Register Src="~/UC/ucQuangCao.ascx" TagPrefix="uc1" TagName="ucQuangCao" %>
+<%@ Register Src="~/UC/ucDSBaiHatMoi.ascx" TagPrefix="uc1" TagName="ucDSBaiHatMoi" %>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Script/StyleSheet.css" rel="stylesheet" />
+ 
+</head>
+    
+<body>
+    <form id="layout" runat="server">
+        
+        <uc1:ucheader runat="server" ID="ucheader" />
+        <uc1:ucMenu runat="server" ID="ucMenu" />
+        
+    <article id="than">  
+         <aside id="left">
+            <uc1:ucQuocGia runat="server" ID="ucQuocGia" />
+         </aside>  
+        <section>
+            <uc1:ucPanner runat="server" ID="ucPanner" />
+            
+             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                            
+             </asp:ContentPlaceHolder>
+        </section>
+        <aside id="right">
+            <uc1:ucAside runat="server" ID="ucAside" />
+            
+            <uc1:ucDSBaiHatMoi runat="server" ID="ucDSBaiHatMoi" />
+            <uc1:ucQuangCao runat="server" ID="ucQuangCao" />
+            
+        </aside>
+    </article> 
+        <uc1:ucFooter runat="server" ID="ucFooter" />
+    </form>
+</body>
+</html>
