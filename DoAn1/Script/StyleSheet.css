@@ -1,0 +1,38 @@
+﻿body>form#layout{
+    width:1250px;
+    border:solid 1px pink;
+    margin:0px auto;
+}
+article {
+    display: table-row;
+} 
+aside#right, section{
+   display:table-cell;
+    vertical-align:top;
+}
+aside#right{
+    vertical-align:top;
+    width:350px;    
+}
+aside#left{
+    background-image:url("../images/Nen_header.gif");
+    width:180px;
+    height:3000px;
+    
+}
+
+section{
+    width:960px;
+    margin-left:100px;  
+   
+}
+body{   
+    background: -webkit-linear-gradient(#FF1493,White,While,White,White,white);
+    background: -o-linear-gradient(#FF1493,White,White,White,White,white);
+    background: -moz-linear-gradient(#FF1493,White,White,White,White,white);
+    background: linear-gradient(#FF1493,White,White,White,White,white);
+    background-repeat:no-repeat;
+}
+#layout{
+    background-color:white;
+}

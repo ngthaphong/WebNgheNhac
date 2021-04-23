@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterAdmin.master.cs" Inherits="Admin_MasterAdmin" %>
+
+<%@ Register Src="~/UC/ucheader.ascx" TagPrefix="uc1" TagName="ucheader" %>
+<%@ Register Src="~/UC/ucMenu.ascx" TagPrefix="uc1" TagName="ucMenu" %>
+<%@ Register Src="~/UC/ucFooter.ascx" TagPrefix="uc1" TagName="ucFooter" %>
+
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../Script/StyleAdmin.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="layout" runat="server">
+        <uc1:ucheader runat="server" ID="ucheader" />
+        <uc1:ucMenu runat="server" ID="ucMenu" />
+    <article id="than">       
+        <section>
+                      
+             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                            
+             </asp:ContentPlaceHolder>
+        </section>
+        <aside id="right">
+                                               
+            <asp:TreeView ID="TreeView1" CssClass="treeview" runat="server">
+                <Nodes>
+                    <asp:TreeNode ImageUrl="~/images/trangchu.jpg" NavigateUrl="~/Admin/Admin.aspx"></asp:TreeNode>
+                    <asp:TreeNode ImageUrl="~/images/quantrihethong.jpg">
+                        <asp:TreeNode ImageUrl="~/images/quantrivien.jpg" NavigateUrl="~/Admin/DSQuanTriVien.aspx"></asp:TreeNode>
+                        <asp:TreeNode ImageUrl="~/images/thanhvien.jpg" NavigateUrl="~/Admin/DSThanhvien.aspx">
+                            <asp:TreeNode ImageUrl="~/images/yeucau.jpg" NavigateUrl="~/Admin/DSYeuCau.aspx"></asp:TreeNode>
+                        </asp:TreeNode>
+                    </asp:TreeNode>
+                    <asp:TreeNode ImageUrl="~/images/quanlydanhmuc.jpg">
+                        <asp:TreeNode ImageUrl="~/images/baihat.jpg" NavigateUrl="~/Admin/DSBaiHat.aspx"></asp:TreeNode>
+                        <asp:TreeNode ImageUrl="~/images/video.jpg" NavigateUrl="~/Admin/DSVideo.aspx"></asp:TreeNode>
+                        <asp:TreeNode ImageUrl="~/images/quangcao.jpg" NavigateUrl="~/Admin/DSQuangCao.aspx"></asp:TreeNode>
+                    </asp:TreeNode>
+                </Nodes>
+            </asp:TreeView>
+                                               
+        </aside>
+    </article> 
+        <uc1:ucFooter runat="server" ID="ucFooter" />
+    </form>
+</body>
+</html>
