@@ -13,6 +13,7 @@ public partial class SearchBH : System.Web.UI.Page
     private ILuceneService ls;
     private IDataFileReader readfile;
     private IEnumerable<DataFileRow> DataFileRows;
+    private bool isFound = false;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -32,12 +33,19 @@ public partial class SearchBH : System.Web.UI.Page
         col.ColumnName = "TimKiem";
         all.Columns.Add(col);
         //contruct null for timkiem
-        for (int i = 0; i < all.Rows.Count; i++)
+        int n = all.Rows.Count;
+        if (n > 0)
         {
-            all.Rows[i]["TimKiem"] = "";
+            isFound = true;
+            for (int i = 0; i < n; i++)
+            {
+                all.Rows[i]["TimKiem"] = "";
+            }
         }
+        
         dlSearch.DataSource = all;
         dlSearch.DataBind();
+        
     }
 
     private void SearchVD()
@@ -49,49 +57,52 @@ public partial class SearchBH : System.Web.UI.Page
 
     public void SearchLoi()
     {
-        //sql
-        string key = Request.QueryString["TenBH"].ToString();
-        string sql = "";
-        if(char.IsUpper(key, 0))
+        if (!isFound)
         {
-            sql = "select * from BAIHAT where LoiBaiHat like N'%" + key + " %'";
-        }
-        else
-        {
-            sql = "select * from BAIHAT where LoiBaiHat like N'% " + key + " %'";
-        }
-        
-        DataTable all = x.GetDaTa(sql);
-        DataColumn col = new DataColumn();
-        col.DataType = Type.GetType("System.String");
-        col.ColumnName = "TimKiem";
-        all.Columns.Add(col);
-
-        DataTable lbh = new DataView(all).ToTable(false, "LoiBaiHat");
-
-        for (int i = 0; i < all.Rows.Count; i++)
-        {
-            ls = new LuceneService();
-            readfile = new DataFileReader();
-            DataRow rlbh = lbh.Rows[i];
-            DataFileRows = readfile.ReadAllRows(rlbh);
-            ls.BuildIndex(DataFileRows);
-            //lucene search
-            var results = ls.Search(Request.QueryString["TenBH"].ToString().ToLower());
-            ls.CloseWriter();
-            var result = results.FirstOrDefault();
-            //create tim kiem
-            if (result == null)
+            //sql
+            string key = Request.QueryString["TenBH"].ToString();
+            string sql = "";
+            if (char.IsUpper(key, 0))
             {
-                all.Rows[i]["TimKiem"] = "Không tìm thấy lời bài hát yêu cầu!";
+                sql = "select * from BAIHAT where LoiBaiHat like N'%" + key + " %'";
             }
             else
             {
-                all.Rows[i]["TimKiem"] = result.LineText;
+                sql = "select * from BAIHAT where LoiBaiHat like N'% " + key + " %'";
             }
+
+            DataTable all = x.GetDaTa(sql);
+            DataColumn col = new DataColumn();
+            col.DataType = Type.GetType("System.String");
+            col.ColumnName = "TimKiem";
+            all.Columns.Add(col);
+
+            DataTable lbh = new DataView(all).ToTable(false, "LoiBaiHat");
+
+            for (int i = 0; i < all.Rows.Count; i++)
+            {
+                ls = new LuceneService();
+                readfile = new DataFileReader();
+                DataRow rlbh = lbh.Rows[i];
+                DataFileRows = readfile.ReadAllRows(rlbh);
+                ls.BuildIndex(DataFileRows);
+                //lucene search
+                var results = ls.Search(Request.QueryString["TenBH"].ToString().ToLower());
+                ls.CloseWriter();
+                var result = results.FirstOrDefault();
+                //create tim kiem
+                if (result == null)
+                {
+                    all.Rows[i]["TimKiem"] = "Không tìm thấy lời bài hát yêu cầu!";
+                }
+                else
+                {
+                    all.Rows[i]["TimKiem"] = result.LineText;
+                }
+            }
+
+            dlSearch.DataSource = all;
+            dlSearch.DataBind();
         }
-        
-        dlSearch.DataSource = all;
-        dlSearch.DataBind();
     }
 }
